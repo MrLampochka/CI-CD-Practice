@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+#    container_name: my-python-app
+#    ports:
+#      - "8000:8000"  # Настрой порт в зависимости от вашего приложения
+    env_file: .env
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONPATH: /app
+#    volumes:
+#      - .:/app  # Для разработки - монтируем код
+      # - ./data:/app/data  # Раскомментируй если нужны данные
+
+    restart: no
+    # unless-stopped
+    # no
+    # always
+    # on-failure
+    stdin_open: true
+    tty: true
+
+  # Пример с базой данных (раскомментируй если нужно)
+  # db:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: mydb
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   postgres_data:
